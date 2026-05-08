@@ -65,7 +65,40 @@ These are common in social media tools but excluded from the first core skill be
 
 ## Install
 
-Copy the skill folder into an agent-compatible skills directory.
+Use `npx`:
+
+```bash
+npx before-you-post-skills
+```
+
+By default this installs the core skill into both:
+
+```text
+.claude/skills/linkedin-founder-post-review/
+.codex/skills/linkedin-founder-post-review/
+```
+
+Install for one target:
+
+```bash
+npx before-you-post-skills --target claude
+npx before-you-post-skills --target codex
+npx before-you-post-skills --target hermes
+```
+
+Install into a specific project directory:
+
+```bash
+npx before-you-post-skills --dir /path/to/project
+```
+
+Replace an existing install:
+
+```bash
+npx before-you-post-skills --force
+```
+
+Manual install also works. Copy the skill folder into an agent-compatible skills directory.
 
 Claude-style:
 
@@ -87,6 +120,8 @@ skills/social-media/linkedin-founder-post-review/
 
 ## Usage
 
+After installing, invoke the skill by name in your agent:
+
 ```text
 Use the linkedin-founder-post-review skill.
 
@@ -100,6 +135,119 @@ Goal: build credibility.
 Concern: sounds generic.
 
 [paste LinkedIn draft]
+```
+
+## Examples
+
+### 1. Review A Draft With Minimal Context
+
+```text
+Use the linkedin-founder-post-review skill.
+
+Reader: solo founders building an audience on LinkedIn
+Goal: build credibility
+Concern: the post sounds generic
+
+Draft:
+I used to think posting consistently was the hard part.
+
+Now I think the hard part is knowing whether the right people actually finish the post.
+
+Most founders use AI to make posts cleaner.
+But cleaner is not always more readable.
+
+Before I publish, I want to know where another founder stops reading.
+```
+
+Expected output:
+
+- Feed preview.
+- Where founder readers may stop.
+- Scorecard.
+- Highest-leverage fixes.
+- Minimal edits that preserve voice.
+
+### 2. Initialize A Writing Profile First
+
+```text
+Use the linkedin-founder-post-review skill to initialize my writing profile.
+
+Audience: solo founders and early-stage builders
+Voice: direct, practical, slightly personal
+Avoid: hype, growth hacks, generic startup advice
+
+Past post 1:
+[paste prior LinkedIn post]
+
+Past post 2:
+[paste prior LinkedIn post]
+
+Past post 3:
+[paste prior LinkedIn post]
+```
+
+Expected output:
+
+- Audience.
+- Recurring topics.
+- Voice traits.
+- Structure patterns.
+- Credibility anchors.
+- Phrases/tone to avoid.
+- Review instruction for future drafts.
+
+### 3. Create A Human Review Brief
+
+```text
+Use the linkedin-founder-post-review skill.
+
+Review this draft and create a human review handoff brief.
+
+Reader: first-time solo founders raising a seed round
+Goal: make the idea feel credible
+Concern: I do not know where readers stop
+
+Draft:
+[paste draft]
+```
+
+Expected output:
+
+- AI readability notes.
+- Likely drop-off point.
+- Generic or over-polished parts.
+- Credible or specific parts.
+- Reviewer questions for a founder-reader.
+
+### 4. Use With Claude/Codex After npx Install
+
+```bash
+npx before-you-post-skills --target claude
+```
+
+Then in Claude:
+
+```text
+Use the linkedin-founder-post-review skill to review this LinkedIn draft.
+
+[draft]
+```
+
+For Codex:
+
+```bash
+npx before-you-post-skills --target codex
+```
+
+Then in Codex:
+
+```text
+Use the linkedin-founder-post-review skill.
+
+Reader: technical founders
+Goal: explain what I am building
+Draft:
+[draft]
 ```
 
 ## Boundary

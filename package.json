@@ -1,0 +1,33 @@
+{
+  "name": "before-you-post-skills",
+  "version": "0.1.0",
+  "description": "Open skills for reviewing founder LinkedIn drafts before publishing.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "before-you-post-skills": "./bin/install.js",
+    "byp-skills": "./bin/install.js"
+  },
+  "files": [
+    "bin/",
+    "skills/",
+    "README.md",
+    "MISSION.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/youndukn/before-you-post-skills.git"
+  },
+  "keywords": [
+    "claude",
+    "codex",
+    "skills",
+    "linkedin",
+    "founder",
+    "writing"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}

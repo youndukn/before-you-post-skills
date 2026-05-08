@@ -12,6 +12,30 @@ Concern: sounds generic.
 [draft]
 ```
 
+## Full Example Prompt
+
+```text
+Use the linkedin-founder-post-review skill.
+
+Reader: solo founders building an audience on LinkedIn
+Goal: explain a product insight and attract early users
+Tone: direct, founder-like, honest
+Concern: sounds generic and too much like AI
+
+Draft:
+I used to think building the product was the hard part.
+
+But now code is cheap.
+
+The hard part is getting someone to trust you with the thing the product needs.
+
+For this idea, the risk is not whether we can build a LinkedIn post review tool.
+
+The risk is whether a founder will paste an unpublished draft before posting.
+
+That changed how I think about validation.
+```
+
 ## Expected Shape
 
 ```markdown
