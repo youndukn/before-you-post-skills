@@ -17,6 +17,17 @@ Profile data can include:
 - Phrases to avoid.
 - Strong examples.
 
+The slash-command workflow is:
+
+```text
+/byp-init
+/byp-review
+```
+
+`/byp-init` creates `BYP-WRITING-PROFILE.md`.
+
+`/byp-review` reads that markdown before reviewing a post.
+
 ## Why It Is Small
 
 This skill intentionally excludes weak generic social media features. It does not do scheduling, hashtag generation, engagement prediction, or viral scoring.

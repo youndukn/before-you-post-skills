@@ -1,5 +1,7 @@
 # Writing Profile Template
 
+Save this file as `BYP-WRITING-PROFILE.md`.
+
 ```markdown
 ## Founder Writing Profile
 

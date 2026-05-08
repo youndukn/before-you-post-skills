@@ -76,6 +76,10 @@ By default this installs the core skill into both:
 ```text
 .claude/skills/linkedin-founder-post-review/
 .codex/skills/linkedin-founder-post-review/
+.claude/commands/byp-init.md
+.claude/commands/byp-review.md
+.codex/commands/byp-init.md
+.codex/commands/byp-review.md
 ```
 
 Install for one target:
@@ -120,7 +124,40 @@ skills/social-media/linkedin-founder-post-review/
 
 ## Usage
 
-After installing, invoke the skill by name in your agent:
+After installing, use the slash-command workflow.
+
+### Step 1: Initialize Your Writing Profile
+
+Run:
+
+```text
+/byp-init
+```
+
+The agent should ask for:
+
+- Target audience.
+- Voice.
+- Phrases or tone to avoid.
+- 2-5 previous LinkedIn posts or writing examples.
+
+It stores the result in:
+
+```text
+BYP-WRITING-PROFILE.md
+```
+
+### Step 2: Review A Draft
+
+Run:
+
+```text
+/byp-review
+```
+
+The agent loads `BYP-WRITING-PROFILE.md`, then asks for the draft, intended reader, post goal, and concern.
+
+Manual invocation also works:
 
 ```text
 Use the linkedin-founder-post-review skill.
@@ -228,9 +265,7 @@ npx before-you-post-skills --target claude
 Then in Claude:
 
 ```text
-Use the linkedin-founder-post-review skill to review this LinkedIn draft.
-
-[draft]
+/byp-init
 ```
 
 For Codex:
@@ -242,12 +277,7 @@ npx before-you-post-skills --target codex
 Then in Codex:
 
 ```text
-Use the linkedin-founder-post-review skill.
-
-Reader: technical founders
-Goal: explain what I am building
-Draft:
-[draft]
+/byp-review
 ```
 
 ## Boundary

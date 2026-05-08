@@ -8,6 +8,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootDir = resolve(__dirname, "..");
 const skillName = "linkedin-founder-post-review";
 const sourceSkillDir = join(rootDir, "skills", "social-media", skillName);
+const sourceCommandsDir = join(rootDir, "commands");
 
 const args = process.argv.slice(2);
 
@@ -54,12 +55,33 @@ const target = readOption("--target") || "all";
 const force = hasFlag("--force");
 
 const targetMap = {
-  claude: [join(projectDir, ".claude", "skills", skillName)],
-  codex: [join(projectDir, ".codex", "skills", skillName)],
-  hermes: [join(projectDir, "skills", "social-media", skillName)],
+  claude: [
+    {
+      skill: join(projectDir, ".claude", "skills", skillName),
+      commands: join(projectDir, ".claude", "commands"),
+    },
+  ],
+  codex: [
+    {
+      skill: join(projectDir, ".codex", "skills", skillName),
+      commands: join(projectDir, ".codex", "commands"),
+    },
+  ],
+  hermes: [
+    {
+      skill: join(projectDir, "skills", "social-media", skillName),
+      commands: join(projectDir, "commands"),
+    },
+  ],
   all: [
-    join(projectDir, ".claude", "skills", skillName),
-    join(projectDir, ".codex", "skills", skillName),
+    {
+      skill: join(projectDir, ".claude", "skills", skillName),
+      commands: join(projectDir, ".claude", "commands"),
+    },
+    {
+      skill: join(projectDir, ".codex", "skills", skillName),
+      commands: join(projectDir, ".codex", "commands"),
+    },
   ],
 };
 
@@ -68,7 +90,8 @@ if (!targetMap[target]) {
   process.exit(1);
 }
 
-for (const destination of targetMap[target]) {
+for (const destinationSet of targetMap[target]) {
+  const destination = destinationSet.skill;
   if (existsSync(destination)) {
     if (!force) {
       console.error(`Refusing to overwrite existing skill: ${destination}`);
@@ -81,7 +104,16 @@ for (const destination of targetMap[target]) {
   mkdirSync(dirname(destination), { recursive: true });
   cpSync(sourceSkillDir, destination, { recursive: true });
   console.log(`Installed ${skillName} -> ${destination}`);
+
+  if (existsSync(sourceCommandsDir)) {
+    mkdirSync(destinationSet.commands, { recursive: true });
+    for (const commandName of ["byp-init.md", "byp-review.md"]) {
+      cpSync(join(sourceCommandsDir, commandName), join(destinationSet.commands, commandName));
+    }
+    console.log(`Installed /byp-init and /byp-review -> ${destinationSet.commands}`);
+  }
 }
 
 console.log("\nDone. Try:");
-console.log("  Use the linkedin-founder-post-review skill to review this LinkedIn draft...");
+console.log("  /byp-init");
+console.log("  /byp-review");

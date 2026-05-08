@@ -10,6 +10,7 @@
   },
   "files": [
     "bin/",
+    "commands/",
     "skills/",
     "README.md",
     "MISSION.md",
@@ -20,6 +21,7 @@
     "url": "git+https://github.com/youndukn/before-you-post-skills.git"
   },
   "keywords": [
+    "byp",
     "claude",
     "codex",
     "skills",

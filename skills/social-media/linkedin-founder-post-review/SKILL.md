@@ -9,6 +9,21 @@ Use this skill when a founder wants to review a LinkedIn draft before publishing
 
 The purpose is not to maximize engagement or produce generic social content. The purpose is to judge whether founder readers would keep reading, where they may stop, what feels generic, what feels credible, and what should be clarified before posting.
 
+## Command Workflow
+
+Preferred command names:
+
+- `/byp-init` — initialize the user's writing profile.
+- `/byp-review` — review a draft using the saved writing profile.
+
+`/byp-init` should create or update:
+
+```text
+BYP-WRITING-PROFILE.md
+```
+
+`/byp-review` should read `BYP-WRITING-PROFILE.md` when it exists before reviewing the draft.
+
 ## Inputs
 
 Ask only for missing context that materially improves the review:
@@ -43,6 +58,12 @@ Extract:
 - Preferred CTA style.
 
 Return a compact profile using `templates/writing-profile.md`.
+
+Save it as:
+
+```text
+BYP-WRITING-PROFILE.md
+```
 
 When reviewing future drafts, compare suggestions against this profile. Do not rewrite the founder into a generic "LinkedIn thought leader" voice.
 
